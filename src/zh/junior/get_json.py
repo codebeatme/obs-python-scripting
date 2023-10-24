@@ -28,8 +28,8 @@ def script_properties():
 
 def json_clicked(props, prop):
     # 获取脚本设置对应的 JSON 字符串
-    json = obs.obs_data_get_json(data)
-    obs.script_log(obs.LOG_INFO, f'设置的 JSON：{json}')
+    json_string = obs.obs_data_get_json(data)
+    obs.script_log(obs.LOG_INFO, f'设置的 JSON：{json_string}')
 
     # 修改设置项 message
     obs.obs_data_set_string(data, 'message', '再见！')
@@ -37,5 +37,5 @@ def json_clicked(props, prop):
 
 def last_json_clicked(props, prop):
     # 获取上一次脚本设置生成的 JSON 字符串
-    json = obs.obs_data_get_last_json(data)
-    obs.script_log(obs.LOG_INFO, f'最后的 JSON：{json}')
+    json_string = obs.obs_data_get_last_json(data)
+    obs.script_log(obs.LOG_INFO, f'最后的 JSON：{json_string}')

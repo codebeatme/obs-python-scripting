@@ -1,45 +1,45 @@
 '''
-本节文章
-https://learnscript.net/zh/obs-python-scripting/junior/data/apply-data-to-target/ 如何应用数据至目标
+本節文章
+https://learnscript.net/zh-hant/obs-python-scripting/junior/data/apply-data-to-target/ 如何應用資料至目標
 '''
 
-# 导入模块 obspython
+# 匯入模組 obspython
 import obspython as obs
 
 def script_properties():
     props = obs.obs_properties_create()
 
-    # 添加合并样式文件的对话框
-    obs.obs_properties_add_button(props, 'style', '合并样式', style_clicked)
+    # 添加合併樣式檔案的對話方塊
+    obs.obs_properties_add_button(props, 'style', '合併樣式', style_clicked)
 
     return props
 
 def style_clicked(props, prop):
     data = obs.obs_data_create()
-    # 从文件 white.json 载入白色样式
+    # 從檔案 white.json 載入白色樣式
     data_white = obs.obs_data_create_from_json_file('white.json')
 
-    # 将包含白色样式的数据对象合并至 data
+    # 將包含白色樣式的資料物件合併至 data
     obs.obs_data_apply(data, data_white)
-    # 输出 data 对应的 JSON 字符串
+    # 輸出 data 對應的 JSON 字串
     json_string = obs.obs_data_get_json(data)
     obs.script_log(obs.LOG_INFO, json_string)
 
-    # 从文件 black.json 载入黑色样式
+    # 從檔案 black.json 載入黑色樣式
     data_black = obs.obs_data_create_from_json_file('black.json')
 
-    # 将包含黑色样式的数据对象合并至 data
+    # 將包含黑色樣式的資料物件合併至 data
     obs.obs_data_apply(data, data_black)
-    # 输出 data 对应的 JSON 字符串
+    # 輸出 data 對應的 JSON 字串
     json_string = obs.obs_data_get_json(data)
     obs.script_log(obs.LOG_INFO, json_string)
 
-    # 获取场景中的文本源 Welcome
+    # 取得場景中的文字來源 Welcome
     source = obs.obs_get_source_by_name('Welcome')
-    # 将样式应用到文本源
+    # 將樣式應用到文字來源
     obs.obs_source_update(source, data)
 
-    # 释放数据对象和源对象
+    # 釋放資料物件和來源物件
     obs.obs_data_release(data_black)
     obs.obs_data_release(data_white)
     obs.obs_data_release(data)

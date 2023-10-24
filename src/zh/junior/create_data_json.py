@@ -1,6 +1,6 @@
 '''
 本节文章
-https://learnscript.net/zh/obs-python-scripting/junior/data/get-json-from-data/ 如何从数据获取 JSON
+https://learnscript.net/zh/obs-python-scripting/junior/data/create-data-from-json/ 如何从 JSON 创建数据
 '''
 
 # 导入模块 obspython，json
