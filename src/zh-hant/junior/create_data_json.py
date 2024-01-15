@@ -23,9 +23,9 @@ def opacity_modified(props, prop, settings):
     # 取得場景中的文字來源 Welcome
     source = obs.obs_get_source_by_name('Welcome')
 
-    # 產生一個 JSON 字串
+    # 建置一個 JSON 字串
     json_string = json.dumps({ "opacity": opacity })
-    # 將產生的 JSON 字串轉換為資料物件
+    # 將建置的 JSON 字串轉換為資料物件
     data = obs.obs_data_create_from_json(json_string)
 
     # 將資料物件應用至文字來源

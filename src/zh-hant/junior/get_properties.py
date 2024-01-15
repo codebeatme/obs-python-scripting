@@ -15,10 +15,10 @@ def script_properties():
     global props
     props = obs.obs_properties_create()
 
-    # 計算當前是星期幾
+    # 計算當前是當周日次
     day = datetime.datetime.now().weekday() + 1
 
-    # 添加一個核取方塊，用來提醒自己是否需要串流，當然該功能並沒有真的實現
+    # 添加一個核取方塊，用來提醒自己是否需要串流，當然該功能並沒有真的實作
     obs.obs_properties_add_bool(props, 'live', f'周 {day} 串流？')
 
     return props

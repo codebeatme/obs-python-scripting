@@ -17,7 +17,7 @@ def script_properties():
 
 # 玩家經驗值
 exp = 0
-# 玩家等級
+# 玩家層級
 level = 0
 
 def save_clicked(props, prop):
@@ -37,10 +37,10 @@ def load_clicked(props, prop):
     # 從檔案 player.json 載入玩家資訊
     data = obs.obs_data_create_from_json_file_safe('player.json', '.backup')
 
-    # 讀取玩家的經驗值和等級
+    # 讀取玩家的經驗值和層級
     exp = obs.obs_data_get_int(data, 'exp')
     level = obs.obs_data_get_int(data, 'level')
     # 釋放資料物件
     obs.obs_data_release(data)
     
-    obs.script_log(obs.LOG_INFO, f'經驗值：{exp}，等級：{level}')
+    obs.script_log(obs.LOG_INFO, f'經驗值：{exp}，層級：{level}')

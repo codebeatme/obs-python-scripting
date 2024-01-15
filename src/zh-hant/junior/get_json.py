@@ -36,6 +36,6 @@ def json_clicked(props, prop):
 
 
 def last_json_clicked(props, prop):
-    # 取得上一次腳本設定產生的 JSON 字串
+    # 取得上一次腳本設定建置的 JSON 字串
     json_string = obs.obs_data_get_last_json(data)
     obs.script_log(obs.LOG_INFO, f'最後的 JSON：{json_string}')
