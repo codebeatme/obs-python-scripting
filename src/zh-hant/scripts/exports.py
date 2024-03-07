@@ -24,6 +24,8 @@ def script_load(settings):
     if closed_time:
         obs.script_log(obs.LOG_INFO, f'上次腳本停止的時間為 {closed_time}')
 
+    obs.script_log(obs.LOG_INFO, script_path())
+
 # def script_unload():
 #     # 將當前時間寫入腳本設定項 closed_time，作為腳本的停止時間
 #     from datetime import datetime
@@ -45,3 +47,13 @@ def script_defaults(settings):
 
 # def script_tick(seconds):
 # 	obs.script_log(obs.LOG_INFO, f'{seconds} OBS 就要無法回應了！！！')
+     
+# 腳本計時器的回呼函式 welcome
+def welcome():
+    obs.script_log(obs.LOG_INFO, f'{type(obs.timer_add)}')
+    obs.script_log(obs.LOG_INFO, '這是只被呼叫一次的回呼函式')
+    # 移除 welcome 對應的腳本計時器
+    obs.remove_current_callback()
+
+# 加入腳本計時器，觸發時間間隔為 3 秒
+obs.timer_add(welcome, 3000)
