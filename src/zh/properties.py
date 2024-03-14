@@ -77,6 +77,12 @@ def login(props, prop):
     # 这里需要返回特定值 True，否则无法看到隐藏效果
     return True
 
+# 移除按钮自身
+def remove_myself(props, prop):
+    obs.obs_properties_remove_by_name(props, 'remove')
+    # 这里需要返回特定值 True
+    return True
+
 # 让消息文本框显示随机的文本
 def set_random_text(props, prop):
     # 随机的获取一个文本
@@ -134,6 +140,9 @@ def script_properties():
     obs.obs_properties_add_text(login_props, 'password', '密码：', obs.OBS_TEXT_PASSWORD)
     # 添加一个登录按钮
     obs.obs_properties_add_button(login_props, 'login', '登录', login)
+
+    # 添加一个按钮，点击后将移除自己
+    obs.obs_properties_add_button(props, 'remove', '移除我自己', remove_myself)
 
     # 添加一个按钮，用于为消息文本框选择随机文本
     obs.obs_properties_add_button(props, 'random_text', '随机消息', set_random_text)

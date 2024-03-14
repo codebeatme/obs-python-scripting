@@ -4,10 +4,16 @@ import obspython as obs
 def test(props, prop):
     # 建立一個名稱為 my_text 的文字（GDI+）來源，並將字串 "今天天氣不錯！" 設定為文字
     settings = obs.obs_data_create_from_json('{"text":"今天天氣不錯！"}')
-    source = obs.obs_source_create('text_gdiplus', 'my_text', settings, None)
+    source_text = obs.obs_source_create('text_gdiplus', 'my_text', settings, None)
+
+    # 將文字（GDI+）來源，新增至名為 Scene 的場景
+    source_scene = obs.obs_get_source_by_name('Scene')
+    scene = obs.obs_scene_from_source(source_scene)
+    obs.obs_scene_add(scene, source_text)
 
     # 釋放來源物件和來源設定物件
-    obs.obs_source_release(source)
+    obs.obs_source_release(source_scene)
+    obs.obs_source_release(source_text)
     obs.obs_data_release(settings)
 
     # 複製名稱為 Welcome 的來源，並指定新名稱 Bye
