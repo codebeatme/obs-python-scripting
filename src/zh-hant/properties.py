@@ -84,7 +84,7 @@ def set_random_text(props, prop):
     messages = ('天氣不錯！', '吃了嗎？', '下雨啦！')
     text = messages[random.randint(0, 2)]
 
-    # 將隨機文字寫入腳本設定項 message
+    # 將隨機文字寫入設定項 message
     obs.obs_data_set_string(current_settings, 'message', text)
     # 將腳本設定應用到屬性集物件
     obs.obs_properties_apply_settings(props, current_settings)
