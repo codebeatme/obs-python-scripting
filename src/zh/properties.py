@@ -103,8 +103,9 @@ def script_properties():
 
     # 添加一个复选框，用于控制是否在脚本载入后执行任务
     obs.obs_properties_add_bool(props, 'auto', '在启动时执行任务？')
-    # 添加一个小数滑块，用于表示延迟执行任务的时间
-    obs.obs_properties_add_float_slider(props, 'seconds', '延迟秒数', 1, 10, 0.5)
+    # 添加一个小数滑块，用于表示延迟执行任务的时间，后缀为字符串 '秒'
+    delay = obs.obs_properties_add_float_slider(props, 'delay', '延迟秒数', 1, 10, 0.5)
+    obs.obs_property_float_set_suffix(delay, '秒')
     # 添加一个文本框，用于表示需要发送的消息
     obs.obs_properties_add_text(props, 'message', '消息：', obs.OBS_TEXT_MULTILINE)
     # 添加一个按钮，用于再次执行 task 函数
@@ -158,7 +159,7 @@ def script_update(settings):
 def script_defaults(settings):
     # 设置控件的默认值
     obs.obs_data_set_default_bool(settings, 'auto', True)
-    obs.obs_data_set_default_double(settings, 'seconds', 1.5)
+    obs.obs_data_set_default_double(settings, 'delay', 1.5)
 
 
 # 变量 current_settings 用于表示脚本设置
@@ -189,6 +190,6 @@ def script_load(settings):
         obs.script_log(obs.LOG_INFO, f'在启动时执行任务（是的）')
 
         # 添加运行任务的计时器，时间间隔为滑块表示的秒数
-        seconds = obs.obs_data_get_double(settings, 'seconds')
+        seconds = obs.obs_data_get_double(settings, 'delay')
         obs.script_log(obs.LOG_INFO, f'请等待大约 {seconds} 秒')
         obs.timer_add(task, int(seconds * 1000))

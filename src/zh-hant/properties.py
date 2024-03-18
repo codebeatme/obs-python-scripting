@@ -103,8 +103,9 @@ def script_properties():
 
     # 新增一個核取方塊，用於控製是否在腳本載入後執行任務
     obs.obs_properties_add_bool(props, 'auto', '在啟動時執行任務？')
-    # 新增一個小數滑桿，用於表示延遲執行任務的時間
-    obs.obs_properties_add_float_slider(props, 'seconds', '延遲秒數', 1, 10, 0.5)
+    # 新增一個小數滑桿，用於表示延遲執行任務的時間，尾碼為字串 '秒'
+    delay = obs.obs_properties_add_float_slider(props, 'delay', '延遲秒數', 1, 10, 0.5)
+    obs.obs_property_float_set_suffix(delay, '秒')
     # 新增一個文字方塊，用於表示需要傳送的訊息
     obs.obs_properties_add_text(props, 'message', '訊息：', obs.OBS_TEXT_MULTILINE)
     # 新增一個按鈕，用於再次執行 task 函式
@@ -158,7 +159,7 @@ def script_update(settings):
 def script_defaults(settings):
     # 設定控製項的預設值
     obs.obs_data_set_default_bool(settings, 'auto', True)
-    obs.obs_data_set_default_double(settings, 'seconds', 1.5)
+    obs.obs_data_set_default_double(settings, 'delay', 1.5)
 
 
 # 變數 current_settings 用於表示腳本設定
@@ -189,6 +190,6 @@ def script_load(settings):
         obs.script_log(obs.LOG_INFO, f'在啟動時執行任務（是的）')
 
         # 新增執行任務的計時器，時間間隔為滑桿表示的秒數
-        seconds = obs.obs_data_get_double(settings, 'seconds')
+        seconds = obs.obs_data_get_double(settings, 'delay')
         obs.script_log(obs.LOG_INFO, f'請等待大約 {seconds} 秒')
         obs.timer_add(task, int(seconds * 1000))
