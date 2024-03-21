@@ -38,7 +38,7 @@ def set_source_color(settings):
 def set_source_font(settings):
     # 获取字体对话框所确定的字体
     font = obs.obs_data_get_obj(settings, 'font')
-    # obs.script_log(obs.LOG_INFO, f"颜色：{font}")
+    # obs.script_log(obs.LOG_INFO, f'颜色：{font}')
     
     # 为场景中的文本源 Welcome 设置字体
     source = obs.obs_get_source_by_name('Welcome')

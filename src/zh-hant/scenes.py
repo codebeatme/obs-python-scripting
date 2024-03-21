@@ -20,12 +20,6 @@ def test(props, prop):
     obs.obs_source_release(source_text)
     obs.obs_data_release(settings)
 
-    # 兩次尋找場景項 Welcome，第二次包括群組
-    welcome = obs.obs_scene_find_source(scene, 'Welcome')
-    obs.script_log(obs.LOG_INFO, f"找到了 Welcome？{welcome != None}")
-    welcome = obs.obs_scene_find_source_recursive(scene, 'Welcome')
-    obs.script_log(obs.LOG_INFO, f"找到了 Welcome（包括群組中的）？{welcome != None}")
-
     # 釋放場景物件和來源物件
     obs.obs_source_release(source_scene)
     obs.obs_scene_release(scene_sub)

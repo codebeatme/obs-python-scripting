@@ -31,7 +31,7 @@ def test(props, prop):
     # 取得持續時間和當前時間，並計算播放進度
     duration = obs.obs_source_media_get_duration(media)
     time = obs.obs_source_media_get_time(media)
-    obs.script_log(obs.LOG_INFO, f"Media 播放進度 {int(time * 100 / duration)}%")
+    obs.script_log(obs.LOG_INFO, f'Media 播放進度 {int(time * 100 / duration)}%')
 
     # 切換媒體來源的各種狀態
     state = obs.obs_source_media_get_state(media)

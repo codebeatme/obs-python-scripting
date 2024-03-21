@@ -20,12 +20,6 @@ def test(props, prop):
     obs.obs_source_release(source_text)
     obs.obs_data_release(settings)
 
-    # 两次查找场景项 Welcome，第二次包括分组
-    welcome = obs.obs_scene_find_source(scene, 'Welcome')
-    obs.script_log(obs.LOG_INFO, f"找到了 Welcome？{welcome != None}")
-    welcome = obs.obs_scene_find_source_recursive(scene, 'Welcome')
-    obs.script_log(obs.LOG_INFO, f"找到了 Welcome（包括分组中的）？{welcome != None}")
-
     # 释放场景对象和来源对象
     obs.obs_source_release(source_scene)
     obs.obs_scene_release(scene_sub)

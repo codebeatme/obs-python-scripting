@@ -30,14 +30,14 @@ def test(props, prop):
     # 顯示 Weclome 來源的大小
     width = obs.obs_source_get_width(welcome)
     height = obs.obs_source_get_height(welcome)
-    obs.script_log(obs.LOG_INFO, f"Welcome 的大小 {width}x{height}")
+    obs.script_log(obs.LOG_INFO, f'Welcome 的大小 {width}x{height}')
 
     # 顯示 Weclome 來源的來源類型識別碼和 UUID
     v_id = obs.obs_source_get_id(welcome)
     id = obs.obs_source_get_unversioned_id(welcome)
-    obs.script_log(obs.LOG_INFO, f"Welcome 的 id {v_id} {id}")
+    obs.script_log(obs.LOG_INFO, f'Welcome 的 id {v_id} {id}')
     uuid = obs.obs_source_get_uuid(welcome)
-    obs.script_log(obs.LOG_INFO, f"Welcome 的 uuid {uuid}")
+    obs.script_log(obs.LOG_INFO, f'Welcome 的 uuid {uuid}')
 
     # 釋放來源 Welcome 和 Bye
     obs.obs_source_release(welcome)
@@ -52,22 +52,22 @@ def test(props, prop):
     # 顯示 Group 來源的類型，並判斷是否為群組
     group = obs.obs_get_source_by_name('Group')
     group_type = obs.obs_source_get_type(group)
-    obs.script_log(obs.LOG_INFO, f"Group 的類型 {group_type}，等於 OBS_SOURCE_TYPE_SCENE？{group_type == obs.OBS_SOURCE_TYPE_SCENE}")
-    obs.script_log(obs.LOG_INFO, f"Group 是群組？{obs.obs_source_is_group(group)}")
+    obs.script_log(obs.LOG_INFO, f'Group 的類型 {group_type}，等於 OBS_SOURCE_TYPE_SCENE？{group_type == obs.OBS_SOURCE_TYPE_SCENE}')
+    obs.script_log(obs.LOG_INFO, f'Group 是群組？{obs.obs_source_is_group(group)}')
     obs.obs_source_release(group)
 
     # 來源 Screen 如果存在，則將其移除
     screen = obs.obs_get_source_by_name('Screen')
     if screen:
         obs.obs_source_remove(screen)
-        obs.script_log(obs.LOG_INFO, f"Screen 被移除？{obs.obs_source_removed(screen)}")
+        obs.script_log(obs.LOG_INFO, f'Screen 被移除？{obs.obs_source_removed(screen)}')
         obs.obs_source_release(screen)
 
     # 判斷來源 Video 的輸出旗標
     video = obs.obs_get_source_by_name('Video')
     flags = obs.obs_source_get_output_flags(video)
-    obs.script_log(obs.LOG_INFO, f"Video 具有視訊功能？{flags & obs.OBS_SOURCE_VIDEO == obs.OBS_SOURCE_VIDEO}")
-    obs.script_log(obs.LOG_INFO, f"Video 具有音訊功能？{flags & obs.OBS_SOURCE_AUDIO == obs.OBS_SOURCE_AUDIO}")
+    obs.script_log(obs.LOG_INFO, f'Video 具有視訊功能？{flags & obs.OBS_SOURCE_VIDEO == obs.OBS_SOURCE_VIDEO}')
+    obs.script_log(obs.LOG_INFO, f'Video 具有音訊功能？{flags & obs.OBS_SOURCE_AUDIO == obs.OBS_SOURCE_AUDIO}')
     obs.obs_source_release(video)
 
 # 為腳本新增一個用於測試的按鈕，回呼函式為 test
