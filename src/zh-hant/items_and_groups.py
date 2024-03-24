@@ -42,6 +42,8 @@ def test(props, prop):
     # 設定場景項 Hi 的旋轉角度
     obs.obs_sceneitem_set_rot(hi, 90)
     obs.obs_scene_load_transform_states(obs.obs_data_get_json(states))
+    # 釋放資料設定物件
+    obs.obs_data_release(states)
 
     # 為場景項 Hi 增加滑出的隱藏轉場效果
     transition = obs.obs_source_create('swipe_transition', 'hi_hide_transition', None, None)
@@ -58,11 +60,6 @@ def test(props, prop):
     bye = obs.obs_scene_find_source_recursive(scene, 'Bye')
     group = obs.obs_sceneitem_get_group(scene, bye)
     obs.script_log(obs.LOG_INFO, f'是群組？{obs.obs_sceneitem_is_group(group)}')
-
-    gs = obs.obs_get_source_by_name('Group')
-    g = obs.obs_group_from_source(gs)
-    obs.script_log(obs.LOG_INFO, f'是群組？{obs.obs_sceneitem_is_group(g)}')
-    obs.obs_source_release(gs)
 
     # 釋放來源物件
     obs.obs_source_release(source_scene)

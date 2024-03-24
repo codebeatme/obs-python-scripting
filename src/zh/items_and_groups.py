@@ -42,6 +42,8 @@ def test(props, prop):
     # 设置场景项 Hi 的旋转角度
     obs.obs_sceneitem_set_rot(hi, 90)
     obs.obs_scene_load_transform_states(obs.obs_data_get_json(states))
+    # 释放数据设置对象
+    obs.obs_data_release(states)
 
     # 为场景项 Hi 增加滑出的隐藏转场效果
     transition = obs.obs_source_create('swipe_transition', 'hi_hide_transition', None, None)
