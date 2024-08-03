@@ -19,7 +19,7 @@ def script_load(settings):
     global data
     data = settings
 
-    # Read the Script Setting Item closed_time, which is the stop-time of the script
+    # Read the Script Setting Item closed_time, which is the stop time of the script
     closed_time = obs.obs_data_get_string(data, 'closed_time')
     if closed_time:
         obs.script_log(obs.LOG_INFO, f'The last time the script stopped was at {closed_time}')
@@ -27,7 +27,7 @@ def script_load(settings):
     obs.script_log(obs.LOG_INFO, script_path())
 
 # def script_unload():
-#     # Write the current time to the Script Setting Item closed_time as the stop-time of the script
+#     # Write the current time to the Script Setting Item closed_time as the stop time of the script
 #     from datetime import datetime
 #     obs.obs_data_set_string(data, 'closed_time', datetime.now().ctime())
 

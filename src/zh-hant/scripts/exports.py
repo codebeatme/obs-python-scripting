@@ -27,17 +27,17 @@ def script_load(settings):
     obs.script_log(obs.LOG_INFO, script_path())
 
 # def script_unload():
-#     # 將當前時間寫入腳本設定項 closed_time，作為腳本的停止時間
+#     # 將目前時間寫入腳本設定項 closed_time，作為腳本的停止時間
 #     from datetime import datetime
 #     obs.obs_data_set_string(data, 'closed_time', datetime.now().ctime())
 
 def script_update(settings):
     # 讀取腳本設定項 hours 並顯示
     hours = obs.obs_data_get_int(settings, 'hours')
-    obs.script_log(obs.LOG_INFO, f'當前小時為 {hours}')
+    obs.script_log(obs.LOG_INFO, f'目前小時為 {hours}')
 
 def script_save(settings):
-	# 將當前時間寫入腳本設定項 closed_time，作為腳本的停止時間
+	# 將目前時間寫入腳本設定項 closed_time，作為腳本的停止時間
 	from datetime import datetime
 	obs.obs_data_set_string(settings, 'closed_time', datetime.now().ctime())
 
